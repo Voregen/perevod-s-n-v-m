@@ -1,0 +1,22 @@
+string per(int n, int m, string s) {
+    ll is=0;
+    ll sis=1;
+    for (int i(s.size()-1); i>=0; i--) {
+        if (s[i]<'A') is=is+sis*(int(s[i])-48);
+        else {
+            is=is+sis*(int(s[i])-65+10);
+        }
+        sis=sis*n;
+    }
+    string ans="";
+    while (is>0) {
+        if (is%m>9) {
+            ans=char(is%m-10+65)+ans;
+        } else {
+            ans=char(is%m+48)+ans;
+        }
+        is=is/m;
+    }
+    if (ans=="") return "0";
+    else return ans;
+}
